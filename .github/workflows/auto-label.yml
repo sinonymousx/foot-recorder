@@ -1,0 +1,16 @@
+name: Auto label by path
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+jobs:
+  label:
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Label design changes
+        uses: actions-ecosystem/action-add-labels@v1
+        with:
+          labels: "prototype"
+        if: contains(github.event.pull_request.changed_files, 'designs/')

@@ -1,0 +1,23 @@
+name: Validate design folder
+on:
+  pull_request:
+    paths:
+      - 'designs/**'
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check required files
+        run: |
+          missing=0
+          while IFS= read -r -d '' dir; do
+            echo "Checking $dir"
+            for req in CAD STL BOM.md build-notes.md; do
+              if [ ! -e "$dir/$req" ]; then
+                echo "::error file=$dir::Missing $req"
+                missing=1
+              fi
+            done
+          done < <(find designs -maxdepth 2 -mindepth 2 -type d -print0)
+          exit $missing

@@ -1,0 +1,19 @@
+name: Welcome
+on:
+  pull_request_target:
+    types: [opened]
+jobs:
+  welcome:
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+    steps:
+      - uses: actions-ecosystem/action-create-comment@v1
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          number: ${{ github.event.pull_request.number }}
+          body: |
+            Thanks for contributing! 🙌
+            - Please confirm: CAD + STL + BOM.md + build-notes.md are included.
+            - No faces/PII in images.
+            - Share print settings (material, infill, orientation).

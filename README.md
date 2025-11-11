@@ -15,7 +15,7 @@ Goal: design and iterate an assistive device so a little girl in Japan (no arms)
 - Prioritize low-cost, easy-to-print, parametric parts.
 
 ## Ethics & privacy
-Do not upload personally identifying images of the child. Use anonymized photos or diagrams. See `docs/safety-and-ethics.md`.
+Do not upload personally identifying images. Use anonymized photos or diagrams. See `docs/safety-and-ethics.md`.
 
 ## Licenses
 - Code: MIT (see `LICENSES/`)
